@@ -1,3 +1,5 @@
+#Live Link : https://student-record-management-system-3dnd.onrender.com/
+
 # Student Record Management System
 
 A responsive student register built with React, Express, Node.js and MongoDB. Records are stored in MongoDB; the application does not seed or retain browser-local data.
