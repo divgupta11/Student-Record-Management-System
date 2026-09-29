@@ -25,7 +25,7 @@ Prerequisites: Node.js 20.19+ (or 22.12+) and a running MongoDB instance or Mong
    npm install
    ```
 
-2. Copy `.env.example` to `.env` and set `MONGO_URI` to your MongoDB connection string. Set `PORT` if the default API port `5000` is unavailable. Keep `.env` private and never commit credentials.
+2. Create a `.env` file in the project root and set `MONGO_URI` to your MongoDB connection string. Set `PORT` if the default API port `5000` is unavailable. Keep `.env` private and never commit credentials.
 
 3. Start the API and Vite development server together:
 

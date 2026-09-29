@@ -8,6 +8,7 @@ import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 import studentRoutes from './routes/studentRoutes.js';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const clientBuildPath = path.join(projectRoot, 'client', 'dist');
 dotenv.config({ path: path.join(projectRoot, '.env') });
 
 const app = express();
@@ -22,6 +23,13 @@ app.get('/api/health', (_request, response) => {
   response.status(200).json({ success: true, message: 'Student API is running.' });
 });
 app.use('/api/students', studentRoutes);
+app.use(express.static(clientBuildPath));
+app.use((request, response, next) => {
+  if (request.method !== 'GET' || request.path.startsWith('/api')) {
+    return next();
+  }
+  return response.sendFile(path.join(clientBuildPath, 'index.html'));
+});
 app.use(notFoundHandler);
 app.use(errorHandler);
 
